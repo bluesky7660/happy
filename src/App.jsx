@@ -10,9 +10,11 @@ function App() {
   const location = useLocation();
   return (
     <div className="App">
-      {!excludedRoutes.includes(location.pathname) && <Header />}
-      <Router/>
-      {!excludedRoutes.includes(location.pathname) && <Navbar />}
+      <div className="app_warpper">
+        {!excludedRoutes.includes(location.pathname) && <Header />}
+        <Router/>
+        {!excludedRoutes.includes(location.pathname) && <Navbar />}
+      </div>
     </div>
       
   );

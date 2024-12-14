@@ -19,22 +19,32 @@ label{
 
 #root {
   width: 100%;
-
+  background-color: rgb(220, 242, 245);
   margin: 0 auto;
+  padding:20px 0;
+  height: 100vh;
 }
 .App{
-  height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 100%;
+}
+.app_warpper{
+  height: 100%;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  border:1px solid #aaa;
+  border-radius: 20px;
 }
-.App>*:not(.header,.navbar,.login){
+.App>.app_warpper>*:not(.header,.navbar,.login){
   height: 100%;
   padding:30px;
   padding-bottom: 0;
   display: flex;
   flex-direction: column;
-  background-color: rgb(220, 242, 245);
+  background-color: rgb(176, 200, 255);
 }
 .login{
   position: absolute;
@@ -112,16 +122,21 @@ label{
 }
 
 .page_title{
-
+  /* height: calc(100% - 508px); */
+  display: flex;
+  gap: 20px;
+}
+.page_title h1{
+  font-size: 2rem;
 }
 
 /*chat*/
-.chat{
-
+.App>.app_warpper .chat{
+  height: calc(100% - 150px);
 }
 .chat_area{
   border: 1px solid #6e7fff;
-  height: 700px;
+  height: calc(100% - 56px);
   border-radius: 10px 10px 0 0;
   background-color: #e0e9fd;
   display: flex;
@@ -129,7 +144,13 @@ label{
 }
 .chat_content{
   height: 100%;
+  padding:20px;
   overflow-y: scroll;
+  -ms-overflow-style: none; /* 인터넷 익스플로러 */
+  scrollbar-width: none; /* 파이어폭스 */
+}
+.chat_content:-webkit-scrollbar {
+  display: none;
 }
 .chat_inputBox{
   width: 100%;
@@ -148,12 +169,40 @@ label{
 .chat_item{
   width: fit-content;
   max-width: 50%;
-  padding:10px;
-  border: 1px solid #ffff;
-  background-color: #fff;
-  border-radius: 10px;
+  
   margin: 10px;
 }
 .question_chat{
   margin-left: auto;
+}
+
+.profile_info{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.question_chat .profile_info{
+  flex-direction: row-reverse;
+}
+.profile_name{
+  
+}
+
+.profile_img{
+  border: 1px solid #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.chat_message{
+  padding:10px;
+  border: 1px solid #ffff;
+  background-color: #fff;
+  border-radius: 10px;
+}
+.chat_message span{
+  word-wrap: break-word;
 }
