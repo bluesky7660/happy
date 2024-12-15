@@ -7,6 +7,7 @@ function Dilemma({ onSendMessage,onModal,setTyping,setDilemma}) {
 
     const selectedClick = (e) => {
         e.target.classList.toggle("active");
+        document.getElementById("select_arrow").classList.toggle("active");
         document.getElementById("select_options").classList.toggle("collapse");
     }
     const optionSelected = (e) => {
@@ -46,7 +47,7 @@ function Dilemma({ onSendMessage,onModal,setTyping,setDilemma}) {
                     <div className="sub_title" >고민 주제</div>
                     <div className="select_selected" onClick={selectedClick}>
                         <div className="selected_text">{isSelected}</div>
-                        <div>▼</div>
+                        <div className="select_arrow" id="select_arrow">▼</div>
                         {/* <div>{?▼:▲}</div> */}
                     </div>
                     <div id="select_options" className="select_options">

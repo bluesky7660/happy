@@ -16,11 +16,14 @@ function Chat() {
     const [modal,setModal] = useState(false);
     const [isDilemma,setDilemma] = useState(false);
     const [isDisable, setIsDisable] = useState(false);
+    const [scroll, setScroll] = useState(false);
+    const [scrollPosition, setScrollPosition] = useState(0);
     
     let aimsg = "";
     let aiTime = "";
     let userTime = "";
     let userInit;
+    
     // let aidelay =  true;
 
     const userInfo = {
@@ -41,6 +44,7 @@ function Chat() {
       setModal(false);
       setDilemma(false);
       setIsDisable(false);
+      setScroll(false);
     }
     const tick =() =>{
       setDate(new Date())
@@ -71,7 +75,7 @@ function Chat() {
             <span>
               만나서 반가워요!<br/>
               여러분의 고민을 들어주는 AI냥냥이이에요.<br/>
-              어떤 일이 있어서 찾아왔나요?
+              어떤 일이 있어서 찾아왔나요?<br/>
             </span>
             <button className="dilemma_button" onClick={()=>{modal ? setModal(false):setModal(true)}} disabled={isDisable}>고민 선택하기</button>
             </div>
@@ -143,6 +147,8 @@ function Chat() {
           { text: "냥냥이(AI)가 열심히 답변을 찾고 있습니다.", isUser: false, isTyping: false, id: userTime }
         ]);
         message = userMessage[0]+" "+userMessage[1];
+
+        
         
       } else {
         message = userMessage;
@@ -153,13 +159,13 @@ function Chat() {
           { text: message, isUser: true, id: userTime },
           { text: "냥냥이(AI)가 열심히 답변을 찾고 있습니다.", isUser: false, isTyping: false, id: userTime }
         ]);
+        
       }
       // setMessages((prevMessages) => [
       //   ...prevMessages,
       //   { text: message, isUser: true, id: isuserTime }
 
       // ]);
-
       if(isTyping == false){
         if(message.includes("안녕")){
           setTimeout(() =>{},50000);
@@ -202,6 +208,12 @@ function Chat() {
     
     useEffect(() => {
       // console.log("isTyping:"+isTyping);
+      const chatContent = document.getElementById('chat_content');
+      console.log("chatContent.scrollHeight:",chatContent.scrollHeight);
+      chatContent.scrollTo({
+        top: chatContent.scrollHeight,
+        behavior: 'smooth'
+      });
       if (currentTypingId === null) {
         console.log("currentTypingId:",currentTypingId);
         console.log("messages:",messages);
@@ -221,7 +233,44 @@ function Chat() {
         console.log("useEffect:");
       }
     }, [messages,isTyping]);
+    useEffect(() => {
+      const chatContent = document.getElementById('chat_content');
+      chatContent.addEventListener('wheel', handleScroll);
+      return () =>{
+        chatContent.removeEventListener('wheel',handleScroll);
+      }
+    },[]);
 
+    const handleScroll = (e) => {
+      console.log("chat_content.deltaY:",e.deltaY);
+      const chatContent = document.getElementById('chat_content');
+      console.log("chat_content.scrollHeight:",e.target.scrollHeight);
+      console.log("chat_content:",e.target);
+      if(e.deltaY < 0){
+        setScroll(true);
+        chatContent.scrollTo({
+          top:e.target.scrollHeight+100,
+          behavior: 'smooth'
+        })
+        console.log("위");
+      }else{
+        console.log("아래");
+        // chatContent.scrollTo({
+        //   top:0,
+        //   behavior: 'smooth'
+        // })
+      }
+
+      // 스크롤이 Top에서 50px 이상 내려오면 true값을 useState에 넣어줌
+      // if(window.scrollY >= 50){
+      //   setScroll(true);
+      //   console.log(scroll)
+      // }else{
+      // // 스크롤이 50px 미만일경우 false를 넣어줌
+      //   setScroll(false);
+      // }
+    
+    };
     // useEffect(() => {
     //   if(message!=""){
     //     console.log("message:",message);
@@ -244,7 +293,7 @@ function Chat() {
             <div className="chatRest" onClick={chatReset}>리셋</div>
         </div>
         <div className="chat_area">
-          <div className="chat_content">
+          <div className="chat_content" id="chat_content">
             {chatInit}
             {/* {isDilemma?
               userInit

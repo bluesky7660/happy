@@ -274,9 +274,10 @@ button,button:active,button:focus,textarea:active,textarea:focus{
 .modal::before{
   content: "";
   position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  bottom: 0;
+  left:0;
+  /* left: 50%; */
+  /* transform: translate(-50%, -50%); */
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
@@ -311,6 +312,13 @@ button,button:active,button:focus,textarea:active,textarea:focus{
   justify-content: space-between;
   color: #777;
   margin-bottom:10px ;
+}
+
+.select_arrow{
+  transition: all .8s ease;
+}
+.select_arrow.active{
+  transform: rotate(180deg);
 }
 
 .select_options{
