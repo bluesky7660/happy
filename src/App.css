@@ -135,6 +135,7 @@ button,button:active,button:focus,textarea:active,textarea:focus{
   font-size: 2rem;
 }
 
+
 /*chat*/
 .App>.app_warpper .chat{
   height: calc(100% - 150px);
@@ -157,12 +158,33 @@ button,button:active,button:focus,textarea:active,textarea:focus{
 .chat_content:-webkit-scrollbar {
   display: none;
 }
-.chat_inputBox{
+.chatRest{
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 10px 15px;
+  height: fit-content;
+  font-weight: bold;
+  transition: all .3s ease;
+  cursor: pointer;
+}
+.chatRest:hover{
+  background-color: #836FFF;
+  color:#fff;
+}
+
+/*챗입력*/
+.message_form{
   width: 100%;
-  padding:10px;
+}
+.message_form_wrapper{
+  width: 100%;
   display: flex;
   justify-content: space-between;
   gap: 10px;
+}
+.chat_inputBox{
+  width: 100%;
+  padding:10px;
   background-color: rgb(127, 148, 255);
 }
 .chat_input{
@@ -171,6 +193,10 @@ button,button:active,button:focus,textarea:active,textarea:focus{
 .chat_submit{
   white-space: nowrap;
 }
+
+
+
+/*채팅리스트*/
 .chat_item{
   width: fit-content;
   max-width: 50%;
@@ -187,7 +213,7 @@ button,button:active,button:focus,textarea:active,textarea:focus{
   align-items: center;
   margin-bottom: 10px;
 }
-.question_chat .profile_info{
+.question_chat .profile_info,.question_chat .chat_item_content{
   flex-direction: row-reverse;
 }
 .profile_name{
@@ -202,6 +228,11 @@ button,button:active,button:focus,textarea:active,textarea:focus{
   background-color: #fff;
 }
 
+.chat_item_content{
+  display: flex;
+  gap: 10px;
+  align-items: end;
+}
 .chat_message{
   padding:10px;
   border: 1px solid #ffff;
@@ -210,6 +241,25 @@ button,button:active,button:focus,textarea:active,textarea:focus{
 }
 .chat_message span{
   word-wrap: break-word;
+}
+
+.chat_time{
+  font-size: 0.9rem;
+}
+
+.dilemma_button{
+  margin-top: 20px;
+  background-color: #836FFF;
+  color: #fff;
+  transition: all 0.5s ease;
+}
+.dilemma_button:not(:disabled){
+  background-color: #472bff;
+  color: #fff;
+}
+.dilemma_button:disabled{
+  opacity: .3;
+  cursor: default;
 }
 
 

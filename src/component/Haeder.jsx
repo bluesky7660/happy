@@ -4,7 +4,7 @@ function Header() {
     <>
       <div id="header" className="header">
           <div className='menu_button'>☰</div>
-          <div className='rest_btn'>R</div>
+          {/* <div className='rest_btn'>R</div> */}
       </div>
     </>
   )
