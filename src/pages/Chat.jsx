@@ -5,6 +5,7 @@ import SeneChatCard from "../component/SeneChatCard";
 // import Typewriter from 'typewriter-effect';
 import MessageList from "../component/MessageList";
 import MessageForm from "../component/MessageForm";
+import Dilemma from "../component/Dilemma";
 
 function Chat() {
     const [messages, setMessages] = useState([]);
@@ -13,6 +14,8 @@ function Chat() {
     const [currentTypingId, setCurrentTypingId] = useState(null);
     const [isTyping, setTyping] = useState(false);
     const [date, setDate] = useState(()=> new Date());
+    const [modal,setmodal] = useState(false);
+    
     let aimsg = "";
     let aiTime = "";
     // let aidelay =  true;
@@ -42,6 +45,13 @@ function Chat() {
   
       }
     })
+    let chatInit = (
+        <div>
+          <p>테스트중임</p>
+          <button onClick={()=>{modal ? setmodal(false):setmodal(true)}}>고민 선택하기</button>
+        </div>
+      )
+    
 
     const handleSendMessage = async (message) => {
       console.log("isTyping:"+isTyping);
@@ -81,6 +91,8 @@ function Chat() {
                 }
               );
               console.log("ai:"+response.data.choices[0].message.content);
+              /*대기중끝 */
+              console.log("대기중끝");
               return response.data.choices[0].message.content;
       
             } catch (error) {
@@ -175,14 +187,14 @@ function Chat() {
         </div>
         <div className="chat_area">
           <div className="chat_content">
-            <MessageList
+            {/* <MessageList
               messages={messages}
-              message={message}
+              isai={isTyping}
               currentTypingId={currentTypingId}
               onEndTyping={handleEndTyping}
               
-            />
-          
+            /> */}
+            {chatInit}
           </div>
           <div className="chat_inputBox">
             <MessageForm onSendMessage={handleSendMessage} isTyping={isTyping} setTyping={setTyping}/>
@@ -202,7 +214,7 @@ function Chat() {
           </div>
         </div>
       </div>
-        
+      {modal ? <Dilemma /> :null}
         
       </>
     )

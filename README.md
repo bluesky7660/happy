@@ -1,8 +1,9 @@
-# React + Vite
+--
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. db넣기
+2. 스크롤 위로 할시 이전 채팅 로그 출력
+3. 채팅 시작시 [고민 선택하기] 로 시작
+4. 고민 시작하기 컴포넌트는 드롭다운 컴포넌트와 textarea로 구현
+5. 고민 시작하기를 필수 적으로 해야 채팅시작
+6. api요청중일떄는 표현하여 출력
+7. 기록 채팅날짜 변할시 사이에 날짜 표시
