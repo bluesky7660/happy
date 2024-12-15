@@ -38,7 +38,8 @@ function Dilemma({ onSendMessage,onModal,setTyping,setDilemma}) {
     };
     return (
       <>
-        <div id="dilemma" className="dilemma modal">
+        <div id="dilemma" className="dilemma modal" >
+            <div className="dilemma_background" onClick={()=>onModal(false)}></div>
             <div className="dilemma_wrapper">
                 <div className="title">
                     <h3>고민 주제 선택하기</h3>
