@@ -1,4 +1,5 @@
 --
+url: https://happy-three-tau.vercel.app/
 
 1. db넣기
 2. 스크롤 위로 할시 이전 채팅 로그 출력
